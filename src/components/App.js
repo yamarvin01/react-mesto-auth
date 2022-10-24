@@ -1,3 +1,5 @@
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import { api } from "../utils/api.js";
 import { CurrentUserContext } from "../context/CurrentUserContext.js";
 import AddPlacePopup from "./AddPlacePopup/AddPlacePopup.js";
@@ -8,7 +10,7 @@ import Footer from "./Footer/Footer.js";
 import Header from "./Header/Header.js";
 import ImagePopup from "./ImagePopup/ImagePopup.js";
 import Main from "./Main/Main.js";
-import React from "react";
+import Login from "./Login/Login.js";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -161,19 +163,31 @@ export default function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page" name="page"
-      >
+      <div className="page">
         <Header />
-        <Main
-          onEditAvatar={handleEditAvatarClick}
-          onEditProfile={handleEditProfileClick}
-          onAddPlace={handleAddPlaceClick}
-          onCardClick={handleCardClick}
-          cards={cards}
-          onCardLike={handleCardLike}
-          onCardDelete={handleCardDelete}
-        />
-        <Footer />
+        <Switch>
+          <Route exact path="/">
+            <Main
+              onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
+            <Footer />
+          </Route>
+
+          <Route path="/sign-in">
+            <Login />
+          </Route>
+
+          <Route path="/sign-up">
+            <h1>sign-up</h1>
+          </Route>
+        </Switch>
+
         <EditAvatarPopup
           onUpdateAvatar={handleUpdateAvatar}
           isLoading={isLoading}
