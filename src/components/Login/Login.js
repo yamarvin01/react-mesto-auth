@@ -1,6 +1,7 @@
 import React from "react";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import Input from "../Input/Input";
+import Form from "../Form/Form";
 
 export default function Login() {
   const [login, setLogin] = React.useState('');
@@ -14,10 +15,18 @@ export default function Login() {
     setEmail(evt.target.value);
   }
 
+  function handleSubmit(evt) {
+    evt.preventDefault();
+    console.log({
+      login: login,
+      email: email
+    });
+  }
+
   return (
-    <>
+    <div className="login">
       <h2>Вход</h2>
-      <form>
+      <Form onSubmit={handleSubmit}>
         <Input
           onChange={handleLoginChange}
           value={login}
@@ -30,7 +39,7 @@ export default function Login() {
           placeholder={"Пароль"}
         />
         <ButtonSubmit color="white">{"Войти"}</ButtonSubmit>
-      </form>
-    </>
+      </Form>
+    </div>
   );
 }
