@@ -7,7 +7,7 @@ export default function Login() {
       <form className="login__form">
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Пароль" />
-        <ButtonSubmit className="button_white">{"Войти"}</ButtonSubmit>
+        <ButtonSubmit color="white">{"Войти"}</ButtonSubmit>
       </form>
     </>
   );

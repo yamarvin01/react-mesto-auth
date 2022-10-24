@@ -38,6 +38,7 @@
 @import url("./styles/blocks/button/_type/button_type_submit.css");
 @import url("./styles/blocks/button/_type/button_type_close.css");
 @import url("./styles/blocks/button/_inactive/button_inactive.css");
+@import url("./styles/blocks/button/_white/button_white.css");
 
 @import url("./styles/blocks/popup/popup.css");
 @import url("./styles/blocks/popup/_opened/popup_opened.css");
