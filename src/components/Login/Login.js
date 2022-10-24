@@ -25,7 +25,7 @@ export default function Login() {
 
   return (
     <div className="login">
-      <h2>Вход</h2>
+      <h2 className="popup__title">Вход</h2>
       <Form
         onSubmit={handleSubmit}
         name={"login"}
