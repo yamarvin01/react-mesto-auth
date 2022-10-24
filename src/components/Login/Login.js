@@ -26,15 +26,20 @@ export default function Login() {
   return (
     <div className="login">
       <h2>Вход</h2>
-      <Form onSubmit={handleSubmit}>
+      <Form
+        onSubmit={handleSubmit}
+        name={"login"}
+      >
         <Input
           onChange={handleLoginChange}
           value={login}
+          name={"login"}
           type={"email"}
           placeholder={"Email"} />
         <Input
           onChange={handleEmailChange}
           value={email}
+          name={"email"}
           type={"password"}
           placeholder={"Пароль"}
         />

@@ -5,27 +5,27 @@ import { CurrentUserContext } from "../../context/CurrentUserContext.js";
 
 export default function EditProfilePopup(props) {
   const currentUser = React.useContext(CurrentUserContext);
-  const [nameValue, setNameValue] = React.useState(currentUser.name);
-  const [aboutValue, setAboutValue] = React.useState(currentUser.about);
+  const [name, setName] = React.useState(currentUser.name);
+  const [about, setAbout] = React.useState(currentUser.about);
 
   React.useEffect(() => {
-    setNameValue(currentUser.name);
-    setAboutValue(currentUser.about);
+    setName(currentUser.name);
+    setAbout(currentUser.about);
   }, [currentUser, props.isOpen]);
 
   function handleNameChange(evt) {
-    setNameValue(evt.target.value);
+    setName(evt.target.value);
   }
 
   function handleAboutChange(evt) {
-    setAboutValue(evt.target.value);
+    setAbout(evt.target.value);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onUpdateUser({
-      name: nameValue,
-      about: aboutValue
+      name: name,
+      about: about
     });
   }
 
@@ -39,7 +39,7 @@ export default function EditProfilePopup(props) {
       onClose={props.onClose}
     >
       <Input
-        value={nameValue}
+        value={name}
         onChange={handleNameChange}
         name={"name"}
         type={"text"}
@@ -48,7 +48,7 @@ export default function EditProfilePopup(props) {
         maxLength={"40"}
       />
       <Input
-        value={aboutValue}
+        value={about}
         onChange={handleAboutChange}
         name={"about"}
         type={"text"}
