@@ -1,4 +1,4 @@
-import "./Login.css";
+import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 
 export default function Login() {
   return (
@@ -7,7 +7,7 @@ export default function Login() {
       <form className="login__form">
         <input type="email" placeholder="Email" />
         <input type="password" placeholder="Пароль" />
-        <button className="login__button" type="submit">Войти</button>
+        <ButtonSubmit className="button_white">{"Войти"}</ButtonSubmit>
       </form>
     </>
   );
