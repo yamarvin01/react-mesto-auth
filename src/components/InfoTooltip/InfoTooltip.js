@@ -10,8 +10,8 @@ export default function InfoTooltip(props) {
       }
     >
       <div className={`popup__container`}>
-        <img src="../../styles/images/icon-success.svg"></img>
-        <img src="https://all-aforizmy.ru/wp-content/uploads/2022/03/moskva-dnr.jpg"></img>
+        <img className="icon icon_type_success"></img>
+        <img className="icon icon_type_fail"></img>
         <h2 className="popup__title">Вы успешно зарегестировались!</h2>
         <ButtonClose onClose={props.onClose} />
       </div>
