@@ -42,6 +42,8 @@
 
 @import url("./styles/blocks/login/login.css");
 @import url("./styles/blocks/login/__title/login__title.css");
+@import url("./styles/blocks/login/__form/login__form.css");
+@import url("./styles/blocks/login/__input/login__input.css");
 @import url("./styles/blocks/loginContainer/loginContainer.css");
 
 @import url("./styles/blocks/register/register.css");
