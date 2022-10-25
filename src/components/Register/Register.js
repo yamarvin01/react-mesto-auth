@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = React.useState('');
@@ -58,6 +59,9 @@ export default function Register() {
           Зарегистрироваться
         </button>
       </form>
+      <div className="register__hint">
+        <Link className="register__hint-title" to="/sign-in" >Уже зарегистрированы? Войти</Link>
+      </div>
     </div>
   );
 }

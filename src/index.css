@@ -54,6 +54,7 @@
 @import url("./styles/blocks/register/__input/register__input.css");
 @import url("./styles/blocks/register/__button/register__button.css");
 @import url("./styles/blocks/register/__hint/register__hint.css");
+@import url("./styles/blocks/register/__hint-title/register__hint-title.css");
 
 @import url("./styles/blocks/icon/icon.css");
 @import url("./styles/blocks/icon/_type/icon_type_success.css");
