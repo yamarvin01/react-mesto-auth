@@ -1,16 +1,17 @@
 import React from "react";
 import { Route, Switch } from "react-router-dom";
-import { api } from "../utils/api.js";
-import { CurrentUserContext } from "../context/CurrentUserContext.js";
-import AddPlacePopup from "./AddPlacePopup/AddPlacePopup.js";
-import DeleteCardPopup from "./DeleteCardPopup/DeleteCardPopup.js";
-import EditAvatarPopup from "./EditAvatarPopup/EditAvatarPopup.js";
-import EditProfilePopup from "./EditProfilePopup/EditProfilePopup.js";
-import Footer from "./Footer/Footer.js";
-import Header from "./Header/Header.js";
-import ImagePopup from "./ImagePopup/ImagePopup.js";
-import Main from "./Main/Main.js";
-import Login from "./Login/Login.js";
+import { api } from "../utils/api";
+import { CurrentUserContext } from "../context/CurrentUserContext";
+import AddPlacePopup from "./AddPlacePopup/AddPlacePopup";
+import DeleteCardPopup from "./DeleteCardPopup/DeleteCardPopup";
+import EditAvatarPopup from "./EditAvatarPopup/EditAvatarPopup";
+import EditProfilePopup from "./EditProfilePopup/EditProfilePopup";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
+import ImagePopup from "./ImagePopup/ImagePopup";
+import Main from "./Main/Main";
+import Login from "./Login/Login";
+import Register from "./Register/Register";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -184,7 +185,7 @@ export default function App() {
           </Route>
 
           <Route path="/sign-up">
-            <h1>sign-up</h1>
+            <Register />
           </Route>
         </Switch>
 

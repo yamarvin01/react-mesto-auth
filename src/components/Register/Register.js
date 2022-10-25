@@ -3,7 +3,7 @@ import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import Input from "../Input/Input";
 import Form from "../Form/Form";
 
-export default function Login() {
+export default function Register() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -24,11 +24,11 @@ export default function Login() {
   }
 
   return (
-    <div className="login">
-      <h2 className="login__title">Вход</h2>
+    <div className="register">
+      <h2 className="register__title">Вход</h2>
       <Form
         onSubmit={handleSubmit}
-        name={"login"}
+        name={"register"}
       >
         <Input
           onChange={handleEmailChange}
@@ -43,7 +43,7 @@ export default function Login() {
           type={"password"}
           placeholder={"Пароль"}
         />
-        <ButtonSubmit color="white">{"Войти"}</ButtonSubmit>
+        <ButtonSubmit color="white">{"Зарегестрироваться"}</ButtonSubmit>
       </Form>
     </div>
   );

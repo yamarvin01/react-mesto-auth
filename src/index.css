@@ -41,6 +41,9 @@
 @import url("./styles/blocks/button/_white/button_white.css");
 
 @import url("./styles/blocks/login/login.css");
+@import url("./styles/blocks/login/__title/login__title.css");
+@import url("./styles/blocks/register/register.css");
+@import url("./styles/blocks/register/__title/register__title.css");
 
 @import url("./styles/blocks/popup/popup.css");
 @import url("./styles/blocks/popup/_opened/popup_opened.css");
