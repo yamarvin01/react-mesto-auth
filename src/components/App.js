@@ -27,8 +27,6 @@ export default function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(true);
   const [isInfoToolTipSucceed, setIsInfoToolTipSucceed] = React.useState(true);
-
-
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
   const [loggedIn, setLoggedIn] = useState(true);
 
