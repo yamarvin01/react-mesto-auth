@@ -9,8 +9,14 @@ export default class Header extends React.Component {
         <a className="header__link" href="#" target="_blank" rel="noopener">
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
         </a>
-        <Link to="/sign-in">Войти</Link>
-        <Link to="/sign-up">Регистрация</Link>
+        <div>
+          <Link className="header__link" to="/sign-in">
+            Войти
+          </Link>
+          <Link className="header__link" to="/sign-up">
+            Регистрация
+          </Link>
+        </div>
       </header>
     );
   }

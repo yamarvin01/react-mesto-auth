@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 import Input from "../Input/Input";
 import Form from "../Form/Form";
@@ -25,7 +26,7 @@ export default function Register() {
 
   return (
     <div className="register">
-      <h2 className="register__title">Вход</h2>
+      <h2 className="register__title">Регистрация</h2>
       <Form
         onSubmit={handleSubmit}
         name={"register"}
@@ -43,7 +44,8 @@ export default function Register() {
           type={"password"}
           placeholder={"Пароль"}
         />
-        <ButtonSubmit color="white">{"Зарегестрироваться"}</ButtonSubmit>
+        <ButtonSubmit color="white">{"Зарегистрироваться"}</ButtonSubmit>
+        <Link className="register__hint" to="/sign-in">Уже зарегистрированы? Войти</Link>
       </Form>
     </div>
   );
