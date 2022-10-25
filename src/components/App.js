@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Redirect, Route, Switch } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { api } from "../utils/api";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import AddPlacePopup from "./AddPlacePopup/AddPlacePopup";
@@ -11,8 +11,8 @@ import Header from "./Header/Header";
 import ImagePopup from "./ImagePopup/ImagePopup";
 import Main from "./Main/Main";
 import Login from "./Login/Login";
-import Register from "./Register/Register";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
+import Register from "./Register/Register";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
