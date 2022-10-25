@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Switch } from "react-router-dom";
+import React, { useState } from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
 import { api } from "../utils/api";
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import AddPlacePopup from "./AddPlacePopup/AddPlacePopup";
@@ -12,6 +12,7 @@ import ImagePopup from "./ImagePopup/ImagePopup";
 import Main from "./Main/Main";
 import Login from "./Login/Login";
 import Register from "./Register/Register";
+import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
@@ -24,6 +25,7 @@ export default function App() {
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
+  const [loggedIn, setLoggedIn] = useState(false);
 
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -166,19 +168,20 @@ export default function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="page">
         <Header />
+
         <Switch>
-          <Route exact path="/">
-            <Main
-              onEditAvatar={handleEditAvatarClick}
-              onEditProfile={handleEditProfileClick}
-              onAddPlace={handleAddPlaceClick}
-              onCardClick={handleCardClick}
-              cards={cards}
-              onCardLike={handleCardLike}
-              onCardDelete={handleCardDelete}
-            />
-            <Footer />
-          </Route>
+          <ProtectedRoute
+            exact path="/"
+            loggedIn={loggedIn}
+            component={Main}
+            onEditAvatar={handleEditAvatarClick}
+            onEditProfile={handleEditProfileClick}
+            onAddPlace={handleAddPlaceClick}
+            onCardClick={handleCardClick}
+            cards={cards}
+            onCardLike={handleCardLike}
+            onCardDelete={handleCardDelete}
+          />
 
           <Route path="/sign-in">
             <Login />
@@ -188,6 +191,8 @@ export default function App() {
             <Register />
           </Route>
         </Switch>
+
+        <Footer />
 
         <EditAvatarPopup
           onUpdateAvatar={handleUpdateAvatar}
