@@ -237,6 +237,7 @@ export default function App() {
         />
         <InfoTooltip
           isOpen={isInfoTooltipOpen}
+          isSuccess={true}
           onClose={closeAllPopups}
         />
       </div>
