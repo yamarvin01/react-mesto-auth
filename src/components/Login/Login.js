@@ -43,7 +43,7 @@ export default function Login() {
           type={"password"}
           placeholder={"Пароль"}
         />
-        <ButtonSubmit color="white">{"Войти"}</ButtonSubmit>
+        <ButtonSubmit type="secondary">{"Войти"}</ButtonSubmit>
       </Form>
     </div>
   );

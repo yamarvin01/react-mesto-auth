@@ -44,7 +44,7 @@ export default function Register() {
           type={"password"}
           placeholder={"Пароль"}
         />
-        <ButtonSubmit color="white">{"Зарегистрироваться"}</ButtonSubmit>
+        <ButtonSubmit type="secondary">{"Зарегистрироваться"}</ButtonSubmit>
         <Link className="register__hint" to="/sign-in">Уже зарегистрированы? Войти</Link>
       </Form>
     </div>

@@ -2,8 +2,8 @@ export default function ButtonSubmit(props) {
   return (
     <button
       className={
-        (props.color === "white")
-          ? "button button_type_submit button_white"
+        (props.type === "secondary")
+          ? "button button_type_submit button_type_secondary"
           : "button button_type_submit"
       }
       type="submit"
