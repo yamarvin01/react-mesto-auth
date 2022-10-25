@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
 
 export default function Login() {
   const [email, setEmail] = React.useState("");
@@ -52,7 +51,7 @@ export default function Login() {
           <span className="password-input-error popup__error"></span>
         </label>
         <button
-          className="button button_type_submit button_type_secondary"
+          className="login__button"
           type="submit"
           aria-label="Войти"
         >

@@ -40,11 +40,12 @@
 @import url("./styles/blocks/button/_type/button_type_secondary.css");
 @import url("./styles/blocks/button/_inactive/button_inactive.css");
 
+@import url("./styles/blocks/loginContainer/loginContainer.css");
 @import url("./styles/blocks/login/login.css");
 @import url("./styles/blocks/login/__title/login__title.css");
 @import url("./styles/blocks/login/__form/login__form.css");
 @import url("./styles/blocks/login/__input/login__input.css");
-@import url("./styles/blocks/loginContainer/loginContainer.css");
+@import url("./styles/blocks/login/__button/login__button.css");
 
 @import url("./styles/blocks/register/register.css");
 @import url("./styles/blocks/register/__title/register__title.css");
