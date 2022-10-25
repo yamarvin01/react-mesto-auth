@@ -51,7 +51,7 @@
 
 @import url("./styles/blocks/icon/icon.css");
 @import url("./styles/blocks/icon/_type/icon_type_success.css");
-@import url("./styles/images/icon-fail.svg");
+@import url("./styles/blocks/icon/_type/icon_type_fail.css");
 
 @import url("./styles/blocks/popup/popup.css");
 @import url("./styles/blocks/popup/_opened/popup_opened.css");
