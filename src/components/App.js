@@ -26,6 +26,7 @@ export default function App() {
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(true);
+  const [isInfoToolTipSucceed, setIsInfoToolTipSucceed] = React.useState(true);
 
 
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
@@ -237,7 +238,7 @@ export default function App() {
         />
         <InfoTooltip
           isOpen={isInfoTooltipOpen}
-          isSuccess={true}
+          isSuccess={isInfoToolTipSucceed}
           onClose={closeAllPopups}
         />
       </div>
