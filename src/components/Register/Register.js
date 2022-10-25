@@ -1,8 +1,4 @@
 import React from "react";
-import { Link } from "react-router-dom";
-import ButtonSubmit from "../ButtonSubmit/ButtonSubmit";
-import Input from "../Input/Input";
-import Form from "../Form/Form";
 
 export default function Register() {
   const [email, setEmail] = React.useState('');
@@ -27,26 +23,41 @@ export default function Register() {
   return (
     <div className="register">
       <h2 className="register__title">Регистрация</h2>
-      <Form
-        onSubmit={handleSubmit}
-        name={"register"}
-      >
-        <Input
-          onChange={handleEmailChange}
-          value={email}
-          name={"email"}
-          type={"email"}
-          placeholder={"Email"} />
-        <Input
-          onChange={handlePasswordChange}
-          value={password}
-          name={"password"}
-          type={"password"}
-          placeholder={"Пароль"}
-        />
-        <ButtonSubmit type="secondary">{"Зарегистрироваться"}</ButtonSubmit>
-        <Link className="register__hint" to="/sign-in">Уже зарегистрированы? Войти</Link>
-      </Form>
+      <form className="register__form" onSubmit={handleSubmit} name={"register"}>
+        <label htmlFor="email">
+          <input
+            className="register__input"
+            onChange={handleEmailChange}
+            value={email}
+            name="email"
+            type="email"
+            placeholder="Email"
+            id="email"
+            required
+          />
+          <span className="email-input-error popup__error"></span>
+        </label>
+        <label htmlFor="password">
+          <input
+            className="register__input"
+            onChange={handlePasswordChange}
+            value={password}
+            name="password"
+            type="password"
+            placeholder="Пароль"
+            id="password"
+            required
+          />
+          <span className="password-input-error popup__error"></span>
+        </label>
+        <button
+          className="register__button"
+          type="submit"
+          aria-label="Зарегистрироваться"
+        >
+          Зарегистрироваться
+        </button>
+      </form>
     </div>
   );
 }
