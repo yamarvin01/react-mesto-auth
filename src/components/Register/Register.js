@@ -1,10 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import * as auth from "../../utils/auth";
+import { useHistory } from "react-router-dom";
 
 export default function Register() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const history = useHistory();
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
@@ -21,6 +23,7 @@ export default function Register() {
         if (registeredUserData) {
           console.log(JSON.stringify(registeredUserData));
           console.log("Вы успешно зарегестрировались");
+          history.push("/sign-in");
         } else {
           console.log("Что-то пошло не так!");
         }
