@@ -24,6 +24,8 @@ export default function Login(props) {
           setPassword('');
           props.handleLogin(true);
           history.push('/');
+        } else {
+          console.log("Что-то пошло не так!");
         }
       })
       .catch((err) => {

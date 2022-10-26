@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
 import { api } from "../utils/api";
 import * as auth from '../utils/auth';
 import { CurrentUserContext } from "../context/CurrentUserContext";
@@ -30,8 +30,10 @@ export default function App() {
   const [isInfoToolTipSucceed, setIsInfoToolTipSucceed] = React.useState(false);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
   const [loggedIn, setLoggedIn] = useState(false);
+  const history = useHistory();
 
   React.useEffect(() => {
+    tokenCheck();
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, cardList]) => {
         setCurrentUser(userData);
@@ -65,6 +67,21 @@ export default function App() {
 
   function handleLogin(state) {
     setLoggedIn(state);
+  }
+
+  function tokenCheck() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      auth.getContent(token).then((userData) => {
+        console.log('userData: ', userData);
+        if (userData) {
+          setLoggedIn(true);
+          history.push("/");
+        } else {
+          return;
+        }
+      });
+    }
   }
 
   function handleUpdateAvatar(newAvatar) {
