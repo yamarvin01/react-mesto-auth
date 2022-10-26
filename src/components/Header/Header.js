@@ -6,7 +6,7 @@ import { CurrentUserEmailContext } from "../../context/CurrentUserEmailContext";
 
 export default function Header() {
   const history = useHistory();
-  const currentUserEmail = React.useContext(CurrentUserEmailContext);
+  const currentUserEmail = React.useContext(CurrentUserEmailContext).toString();
   const [pathName, setPathName] = React.useState(history.location.pathname);
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ export default function Header() {
         <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
       </a>
       <div className="header__content">
-        <p className="header__text">{currentUserEmail.toString()}</p>
+        <p className="header__text">{currentUserEmail}</p>
         {pathName === "/sign-up" && (
           <Link className="header__link" to="/sign-in">Войти</Link>
         )}
