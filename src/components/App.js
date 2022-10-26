@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Route, Switch } from "react-router-dom";
 import { api } from "../utils/api";
+import * as auth from '../utils/auth';
 import { CurrentUserContext } from "../context/CurrentUserContext";
 import AddPlacePopup from "./AddPlacePopup/AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup/DeleteCardPopup";
