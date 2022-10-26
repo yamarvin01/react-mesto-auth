@@ -7,13 +7,12 @@ export default function Header() {
   const history = useHistory();
   const [pathName, setPathName] = React.useState(history.location.pathname);
 
-  function handleSignUpLink() {
-    setPathName('/sign-in');
-  }
-
-  function handleSignInLink() {
-    setPathName('/sign-up');
-  }
+  React.useEffect(() => {
+    return history.listen((location) => {
+      console.log(`You changed the page to: ${location.pathname}`);
+      setPathName(location.pathname);
+    });
+  }, [history]);
 
   return (
     <header className="header">
@@ -21,16 +20,15 @@ export default function Header() {
         <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
       </a>
       <div>
-        { (pathName === "/sign-up") &&
-        <Link onClick={handleSignUpLink} className="header__link" to="/sign-in">
-          Войти
-        </Link>
-        }
-        { (pathName === "/sign-in") &&
-        <Link onClick={handleSignInLink} className="header__link" to="/sign-up">
-          Регистрация
-        </Link>
-        }
+        {pathName === "/sign-up" && (
+          <Link className="header__link" to="/sign-in">Войти</Link>
+        )}
+        {pathName === "/sign-in" && (
+          <Link className="header__link" to="/sign-up">Регистрация</Link>
+        )}
+        {pathName === "/" && (
+          <Link className="header__link" to="/sign-in">Выйти</Link>
+        )}
       </div>
     </header>
   );
