@@ -21,7 +21,6 @@ export default function Register() {
     auth.register(email, password)
       .then((registeredUserData) => {
         if (registeredUserData) {
-          console.log(JSON.stringify(registeredUserData));
           console.log("Вы успешно зарегестрировались");
           history.push("/sign-in");
         } else {

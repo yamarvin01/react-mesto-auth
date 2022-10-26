@@ -26,10 +26,10 @@ export default function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(true);
-  const [isInfoToolTipSucceed, setIsInfoToolTipSucceed] = React.useState(true);
+  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(false);
+  const [isInfoToolTipSucceed, setIsInfoToolTipSucceed] = React.useState(false);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   React.useEffect(() => {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -62,6 +62,10 @@ export default function App() {
       }
     }
   }, [isOpen]);
+
+  function handleLogin(state) {
+    setLoggedIn(state);
+  }
 
   function handleUpdateAvatar(newAvatar) {
     setIsLoading(true);
@@ -190,7 +194,7 @@ export default function App() {
 
           <Route path="/sign-in">
             <div className="loginContainer">
-              <Login />
+              <Login handleLogin={handleLogin}/>
             </div>
           </Route>
 

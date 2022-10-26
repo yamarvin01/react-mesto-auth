@@ -9,7 +9,6 @@ export default function Header() {
 
   React.useEffect(() => {
     return history.listen((location) => {
-      console.log(`You changed the page to: ${location.pathname}`);
       setPathName(location.pathname);
     });
   }, [history]);
