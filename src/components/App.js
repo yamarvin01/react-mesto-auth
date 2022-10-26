@@ -19,7 +19,7 @@ import Register from "./Register/Register";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
-  const [currentUserEmail, setCurrentUserEmail] = React.useState({});
+  const [currentUserEmail, setCurrentUserEmail] = React.useState('');
   const [cards, setCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
@@ -75,7 +75,6 @@ export default function App() {
     const token = localStorage.getItem('token');
     if (token) {
       auth.getContent(token).then((userData) => {
-        console.log('userData: ', userData);
         if (userData) {
           setLoggedIn(true);
           setCurrentUserEmail(userData.data.email);
@@ -193,11 +192,19 @@ export default function App() {
     setSelectedCard({});
   }
 
+  function signOut() {
+    setLoggedIn(false);
+    setCurrentUserEmail('');
+    localStorage.removeItem('token');
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentUserEmailContext.Provider value={currentUserEmail}>
         <div className="page">
-          <Header />
+          <Header
+            signOut={signOut}
+          />
 
           <Switch>
             <ProtectedRoute

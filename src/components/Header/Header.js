@@ -4,9 +4,9 @@ import logo from "../../styles/images/logo-mesto.svg";
 import { useHistory } from "react-router-dom";
 import { CurrentUserEmailContext } from "../../context/CurrentUserEmailContext";
 
-export default function Header() {
+export default function Header(props) {
   const history = useHistory();
-  const currentUserEmail = React.useContext(CurrentUserEmailContext).toString();
+  const currentUserEmail = React.useContext(CurrentUserEmailContext);
   const [pathName, setPathName] = React.useState(history.location.pathname);
 
   React.useEffect(() => {
@@ -29,7 +29,7 @@ export default function Header() {
           <Link className="header__link" to="/sign-up">Регистрация</Link>
         )}
         {pathName === "/" && (
-          <Link className="header__link" to="/sign-in">Выйти</Link>
+          <Link className="header__link header__link_dim" to="sign-in" onClick={props.signOut}>Выйти</Link>
         )}
       </div>
     </header>
