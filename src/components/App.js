@@ -67,8 +67,9 @@ export default function App() {
     }
   }, [isOpen]);
 
-  function handleLogin(state) {
-    setLoggedIn(state);
+  function handleLogin({loggedIn, email}) {
+    setLoggedIn(loggedIn);
+    setCurrentUserEmail(email);
   }
 
   function tokenCheck() {
