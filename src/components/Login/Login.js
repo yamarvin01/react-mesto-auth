@@ -19,7 +19,6 @@ export default function Login(props) {
     evt.preventDefault();
     auth.authorize(email, password)
       .then((data) => {
-        console.log(data);
         if (data.token) {
           props.handleLogin({loggedIn: true, email: email});
           setEmail('');
