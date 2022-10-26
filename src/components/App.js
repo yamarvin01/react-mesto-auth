@@ -206,7 +206,6 @@ export default function App() {
           <Header
             signOut={signOut}
           />
-
           <Switch>
             <ProtectedRoute
               exact path="/"
@@ -220,22 +219,18 @@ export default function App() {
               onCardLike={handleCardLike}
               onCardDelete={handleCardDelete}
             />
-
             <Route path="/sign-in">
               <div className="loginContainer">
                 <Login handleLogin={handleLogin}/>
               </div>
             </Route>
-
             <Route path="/sign-up">
               <div className="registerContainer">
                 <Register />
               </div>
             </Route>
           </Switch>
-
           <Footer />
-
           <EditAvatarPopup
             onUpdateAvatar={handleUpdateAvatar}
             isLoading={isLoading}
