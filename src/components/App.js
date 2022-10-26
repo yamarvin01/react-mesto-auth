@@ -3,6 +3,7 @@ import { Route, Switch, useHistory } from "react-router-dom";
 import { api } from "../utils/api";
 import * as auth from '../utils/auth';
 import { CurrentUserContext } from "../context/CurrentUserContext";
+import { CurrentUserEmailContext } from "../context/CurrentUserEmailContext";
 import AddPlacePopup from "./AddPlacePopup/AddPlacePopup";
 import DeleteCardPopup from "./DeleteCardPopup/DeleteCardPopup";
 import EditAvatarPopup from "./EditAvatarPopup/EditAvatarPopup";
@@ -18,6 +19,7 @@ import Register from "./Register/Register";
 
 export default function App() {
   const [currentUser, setCurrentUser] = React.useState({});
+  const [currentUserEmail, setCurrentUserEmail] = React.useState({});
   const [cards, setCards] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
@@ -76,6 +78,7 @@ export default function App() {
         console.log('userData: ', userData);
         if (userData) {
           setLoggedIn(true);
+          setCurrentUserEmail(userData.data.email);
           history.push("/");
         } else {
           return;
@@ -192,76 +195,78 @@ export default function App() {
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
-      <div className="page">
-        <Header />
+      <CurrentUserEmailContext.Provider value={currentUserEmail}>
+        <div className="page">
+          <Header />
 
-        <Switch>
-          <ProtectedRoute
-            exact path="/"
-            loggedIn={loggedIn}
-            component={Main}
-            onEditAvatar={handleEditAvatarClick}
-            onEditProfile={handleEditProfileClick}
-            onAddPlace={handleAddPlaceClick}
-            onCardClick={handleCardClick}
-            cards={cards}
-            onCardLike={handleCardLike}
-            onCardDelete={handleCardDelete}
+          <Switch>
+            <ProtectedRoute
+              exact path="/"
+              loggedIn={loggedIn}
+              component={Main}
+              onEditAvatar={handleEditAvatarClick}
+              onEditProfile={handleEditProfileClick}
+              onAddPlace={handleAddPlaceClick}
+              onCardClick={handleCardClick}
+              cards={cards}
+              onCardLike={handleCardLike}
+              onCardDelete={handleCardDelete}
+            />
+
+            <Route path="/sign-in">
+              <div className="loginContainer">
+                <Login handleLogin={handleLogin}/>
+              </div>
+            </Route>
+
+            <Route path="/sign-up">
+              <div className="registerContainer">
+                <Register />
+              </div>
+            </Route>
+          </Switch>
+
+          <Footer />
+
+          <EditAvatarPopup
+            onUpdateAvatar={handleUpdateAvatar}
+            isLoading={isLoading}
+            isOpen={isEditAvatarPopupOpen}
+            onClose={closeAllPopups}
+          ></EditAvatarPopup>
+          <EditProfilePopup
+            onUpdateUser={handleUpdateUser}
+            isLoading={isLoading}
+            isOpen={isEditProfilePopupOpen}
+            onClose={closeAllPopups}
+          ></EditProfilePopup>
+          <AddPlacePopup
+            onAddCard={handleAddPlaceSubmit}
+            isLoading={isLoading}
+            isOpen={isAddPlacePopupOpen}
+            onClose={closeAllPopups}
+          >
+          </AddPlacePopup>
+          <DeleteCardPopup
+            onDeleteCard={handleCardDeleteSubmit}
+            isLoading={isLoading}
+            isOpen={isDeleteCardPopupOpen}
+            onClose={closeAllPopups}
+          >
+          </DeleteCardPopup>
+          <ImagePopup
+            name="image"
+            isOpen={isImagePopupOpen}
+            card={selectedCard}
+            onClose={closeAllPopups}
           />
-
-          <Route path="/sign-in">
-            <div className="loginContainer">
-              <Login handleLogin={handleLogin}/>
-            </div>
-          </Route>
-
-          <Route path="/sign-up">
-            <div className="registerContainer">
-              <Register />
-            </div>
-          </Route>
-        </Switch>
-
-        <Footer />
-
-        <EditAvatarPopup
-          onUpdateAvatar={handleUpdateAvatar}
-          isLoading={isLoading}
-          isOpen={isEditAvatarPopupOpen}
-          onClose={closeAllPopups}
-        ></EditAvatarPopup>
-        <EditProfilePopup
-          onUpdateUser={handleUpdateUser}
-          isLoading={isLoading}
-          isOpen={isEditProfilePopupOpen}
-          onClose={closeAllPopups}
-        ></EditProfilePopup>
-        <AddPlacePopup
-          onAddCard={handleAddPlaceSubmit}
-          isLoading={isLoading}
-          isOpen={isAddPlacePopupOpen}
-          onClose={closeAllPopups}
-        >
-        </AddPlacePopup>
-        <DeleteCardPopup
-          onDeleteCard={handleCardDeleteSubmit}
-          isLoading={isLoading}
-          isOpen={isDeleteCardPopupOpen}
-          onClose={closeAllPopups}
-        >
-        </DeleteCardPopup>
-        <ImagePopup
-          name="image"
-          isOpen={isImagePopupOpen}
-          card={selectedCard}
-          onClose={closeAllPopups}
-        />
-        <InfoTooltip
-          isOpen={isInfoTooltipOpen}
-          isSuccess={isInfoToolTipSucceed}
-          onClose={closeAllPopups}
-        />
-      </div>
+          <InfoTooltip
+            isOpen={isInfoTooltipOpen}
+            isSuccess={isInfoToolTipSucceed}
+            onClose={closeAllPopups}
+          />
+        </div>
+      </CurrentUserEmailContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
