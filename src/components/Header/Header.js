@@ -1,7 +1,7 @@
+import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../styles/images/logo-mesto.svg";
 import { useHistory } from "react-router-dom";
-import React from "react";
 
 export default function Header() {
   const history = useHistory();
