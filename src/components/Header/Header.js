@@ -1,10 +1,19 @@
 import { Link } from "react-router-dom";
 import logo from "../../styles/images/logo-mesto.svg";
-import { useRouteMatch } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import React from "react";
 
 export default function Header() {
-  const { url, path } = useRouteMatch();
-  console.log("url: " + url, "path: " + path);
+  const history = useHistory();
+  const [pathName, setPathName] = React.useState(history.location.pathname);
+
+  function handleSignUpLink() {
+    setPathName('/sign-in');
+  }
+
+  function handleSignInLink() {
+    setPathName('/sign-up');
+  }
 
   return (
     <header className="header">
@@ -12,12 +21,16 @@ export default function Header() {
         <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
       </a>
       <div>
-        <Link className="header__link" to="/sign-in">
+        { (pathName === "/sign-up") &&
+        <Link onClick={handleSignUpLink} className="header__link" to="/sign-in">
           Войти
         </Link>
-        <Link className="header__link" to="/sign-up">
+        }
+        { (pathName === "/sign-in") &&
+        <Link onClick={handleSignInLink} className="header__link" to="/sign-up">
           Регистрация
         </Link>
+        }
       </div>
     </header>
   );
