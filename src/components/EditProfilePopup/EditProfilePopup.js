@@ -65,7 +65,7 @@ export default function EditProfilePopup(props) {
           maxLength="200"
           required
         />
-        <span className="name-input-error popup__error"></span>
+        <span className="about-input-error popup__error"></span>
       </label>
     </PopupWithForm>
   );
