@@ -2,27 +2,27 @@ import React from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
 export default function AddPlacePopup(props) {
-  const [name, setNameValue] = React.useState("");
-  const [linkValue, setLinkValue] = React.useState("");
+  const [place, setPlace] = React.useState("");
+  const [link, setLink] = React.useState("");
 
   React.useEffect(() => {
-    setNameValue("");
-    setLinkValue("");
+    setPlace("");
+    setLink("");
   }, [props.isOpen]);
 
-  function handleNameChange(evt) {
-    setNameValue(evt.target.value);
+  function handlePlaceChange(evt) {
+    setPlace(evt.target.value);
   }
 
   function handleLinkChange(evt) {
-    setLinkValue(evt.target.value);
+    setLink(evt.target.value);
   }
 
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onAddCard({
-      name: name,
-      link: linkValue,
+      name: place,
+      link: link,
     });
   }
 
@@ -37,8 +37,8 @@ export default function AddPlacePopup(props) {
     >
       <label className="popup__field" htmlFor="place">
         <input
-          value={name || ""}
-          onChange={handleNameChange}
+          value={place || ""}
+          onChange={handlePlaceChange}
           className="popup__input popup__input_type_place"
           name="place"
           id="place"
@@ -52,7 +52,7 @@ export default function AddPlacePopup(props) {
       </label>
       <label className="popup__field" htmlFor="link">
         <input
-          value={linkValue || ""}
+          value={link || ""}
           onChange={handleLinkChange}
           className="popup__input popup__input_type_link"
           name="link"
