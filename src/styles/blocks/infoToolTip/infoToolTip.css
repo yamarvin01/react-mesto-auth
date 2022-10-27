@@ -1,0 +1,9 @@
+.infoToolTip {
+  width: 430px;
+  border-radius: 10px;
+}
+
+
+/* .infoToolTip::backdrop {
+  border: 2px red solid;
+} */
