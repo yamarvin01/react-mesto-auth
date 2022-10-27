@@ -1,5 +1,4 @@
 import React from "react";
-import Input from "../Input/Input.js";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
 export default function AddPlacePopup(props) {
@@ -36,22 +35,34 @@ export default function AddPlacePopup(props) {
       isOpen={props.isOpen}
       onClose={props.onClose}
     >
-      <Input
-        value={nameValue}
-        onChange={handleNameChange}
-        name={"place"}
-        type={"text"}
-        placeholder={"Название"}
-        minLength="2"
-        maxLength="30"
-      />
-      <Input
-        value={linkValue}
-        onChange={handleLinkChange}
-        name={"link"}
-        type={"url"}
-        placeholder={"Ссылка на картинку"}
-      />
+      <label className="popup__field" htmlFor="place">
+        <input
+          value={nameValue || ""}
+          onChange={handleNameChange}
+          className="popup__input popup__input_type_place"
+          name="place"
+          id="place"
+          type="text"
+          placeholder="Название"
+          minLength="2"
+          maxLength="30"
+          required
+        />
+        <span className={`${props.name}-input-error popup__error`}></span>
+      </label>
+      <label className="popup__field" htmlFor="link">
+        <input
+          value={linkValue || ""}
+          onChange={handleLinkChange}
+          className="popup__input popup__input_type_link"
+          name="link"
+          id="link"
+          type="url"
+          placeholder="Ссылка на картинку"
+          required
+        />
+        <span className={`${props.name}-input-error popup__error`}></span>
+      </label>
     </PopupWithForm>
   );
 }
