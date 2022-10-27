@@ -3,15 +3,9 @@ import ButtonClose from "../ButtonClose/ButtonClose";
 import Icon from "../Icon/Icon";
 
 export default function InfoTooltip(props) {
-  const [isOpened, setIsOpened] = React.useState(false);
-
-  function handleClose() {
-    setIsOpened(false);
-  }
-
   return (
     <div className={
-      isOpened
+      props.isOpened
         ? "infoTooltip infoTooltip_opened"
         : "infoTooltip"}>
       <div className="infoTooltip__container">
@@ -22,7 +16,7 @@ export default function InfoTooltip(props) {
             : "Что-то пошло не так! Попробуйте ещё раз."
           }
         </h2>
-        <ButtonClose onClose={handleClose} />
+        <ButtonClose onClose={props.onClose} />
       </div>
     </div>
   );

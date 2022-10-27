@@ -8,6 +8,7 @@ export default function Register() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
   const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
+  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = useState(false);
   const history = useHistory();
 
   function handleEmailChange(evt) {
@@ -32,6 +33,10 @@ export default function Register() {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function handleInfoTooltipClose() {
+    setIsInfoTooltipOpened(false);
   }
 
   return (
@@ -75,7 +80,11 @@ export default function Register() {
       <div className="register__hint">
         <Link className="register__hint-title" to="/sign-in" >Уже зарегистрированы? Войти</Link>
       </div>
-      <InfoTooltip isSuccess={isRegisterSuccess} />
+      <InfoTooltip
+        isOpened={isInfoTooltipOpened}
+        isSuccess={isRegisterSuccess}
+        onClose={handleInfoTooltipClose}
+      />
     </div>
   );
 }
