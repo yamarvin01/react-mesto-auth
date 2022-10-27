@@ -1,10 +1,13 @@
 import React from "react";
 import * as auth from "../../utils/auth";
 import { useHistory } from "react-router-dom";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 export default function Login(props) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
+  const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
+  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(false);
   const history = useHistory();
 
   function handleEmailChange(evt) {
@@ -19,7 +22,10 @@ export default function Login(props) {
     evt.preventDefault();
     auth.authorize(email, password)
       .then((data) => {
-        if (data.token) {
+        if (data === undefined) {
+          setIsLoginSuccess(false);
+          setIsInfoTooltipOpened(true);
+        } else if (data.token) {
           props.handleLogin({loggedIn: true, email: email});
           setEmail('');
           setPassword('');
@@ -31,6 +37,10 @@ export default function Login(props) {
       .catch((err) => {
         console.log(err);
       });
+  }
+
+  function handleInfoTooltipClose() {
+    setIsInfoTooltipOpened(false);
   }
 
   return (
@@ -71,6 +81,11 @@ export default function Login(props) {
           Войти
         </button>
       </form>
+      <InfoTooltip
+        isOpened={isInfoTooltipOpened}
+        isSuccess={isLoginSuccess}
+        onClose={handleInfoTooltipClose}
+      />
     </div>
   );
 }

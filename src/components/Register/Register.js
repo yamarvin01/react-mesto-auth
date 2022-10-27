@@ -7,8 +7,8 @@ import InfoTooltip from "../InfoTooltip/InfoTooltip";
 export default function Register() {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [isRegisterSuccess, setIsRegisterSuccess] = useState(false);
-  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = useState(false);
+  const [isRegisterSuccess, setIsRegisterSuccess] = React.useState(false);
+  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(false);
   const history = useHistory();
 
   function handleEmailChange(evt) {
