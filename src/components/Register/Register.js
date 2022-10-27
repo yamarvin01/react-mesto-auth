@@ -27,6 +27,8 @@ export default function Register() {
           console.log("Вы успешно зарегестрировались");
           history.push("/sign-in");
         } else {
+          setIsInfoTooltipOpened(true);
+          setIsRegisterSuccess(false);
           console.log("Что-то пошло не так!");
         }
       })
