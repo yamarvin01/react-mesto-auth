@@ -26,11 +26,9 @@ export default function Register() {
         if (userData) {
           setIsInfoTooltipOpened(true);
           setIsRegisterSuccess(true);
-          console.log("Вы успешно зарегестрировались");
         } else {
           setIsInfoTooltipOpened(true);
           setIsRegisterSuccess(false);
-          console.log("Что-то пошло не так!");
         }
       })
       .catch((err) => {
