@@ -4,6 +4,7 @@
   align-items: center;
   width: 100%; /*Свойство не дает странице схлопнуться по ширине*/
   max-width: 880px;
+  border-top: 1px solid rgba(84, 84, 84, 0.7);
   border-bottom: 1px solid rgba(84, 84, 84, 0.7);
   padding: 45px 0 40px;
 }

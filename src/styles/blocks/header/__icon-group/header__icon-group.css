@@ -6,5 +6,6 @@
 }
 
 .header__icon-group:hover {
+  cursor: pointer;
   opacity: 0.6;
 }

@@ -10,6 +10,10 @@
 @import url("./styles/blocks/header/__logo/header__logo.css");
 @import url("./styles/blocks/header/__text/header__text.css");
 @import url("./styles/blocks/header/__icon-group/header__icon-group.css");
+@import url("./styles/blocks/header/__icon-close/header__icon-close.css");
+@import url("./styles/blocks/header/__mobile/header__mobile.css");
+@import url("./styles/blocks/header/__mobile-text/header__mobile-text.css");
+@import url("./styles/blocks/header/__mobile-link/header__mobile-link.css");
 
 @import url("./styles/blocks/content/content.css");
 
