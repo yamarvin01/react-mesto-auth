@@ -39,7 +39,7 @@ export default function AddPlacePopup(props) {
         <input
           value={place || ""}
           onChange={handlePlaceChange}
-          className="popup__input popup__input_type_place"
+          className="popup__input"
           name="place"
           id="place"
           type="text"
@@ -54,7 +54,7 @@ export default function AddPlacePopup(props) {
         <input
           value={link || ""}
           onChange={handleLinkChange}
-          className="popup__input popup__input_type_link"
+          className="popup__input"
           name="link"
           id="link"
           type="url"

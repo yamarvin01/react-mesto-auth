@@ -41,7 +41,7 @@ export default function EditProfilePopup(props) {
         <input
           value={name || ""}
           onChange={handleNameChange}
-          className="popup__input popup__input_type_name"
+          className="popup__input"
           name="name"
           id="name"
           type="text"
@@ -56,7 +56,7 @@ export default function EditProfilePopup(props) {
         <input
           value={about || ""}
           onChange={handleAboutChange}
-          className="popup__input popup__input_type_about"
+          className="popup__input"
           name="about"
           id="about"
           type="text"

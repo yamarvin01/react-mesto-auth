@@ -27,7 +27,7 @@ export default function EditAvatarPopup(props) {
       <label className="popup__field" htmlFor="avatar">
         <input
           ref={inputRef}
-          className="popup__input popup__input_type_avatar"
+          className="popup__input"
           name="avatar"
           id="avatar"
           type="url"
