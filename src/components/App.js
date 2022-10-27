@@ -11,7 +11,6 @@ import EditProfilePopup from "./EditProfilePopup/EditProfilePopup";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import ImagePopup from "./ImagePopup/ImagePopup";
-import InfoTooltip from "./InfoTooltip/InfoTooltip";
 import Main from "./Main/Main";
 import Login from "./Login/Login";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
@@ -28,8 +27,6 @@ export default function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
-  const [isInfoTooltipOpen, setIsInfoTooltipOpen] = React.useState(true);
-  const [isInfoToolTipSucceed, setIsInfoToolTipSucceed] = React.useState(true);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
   const [loggedIn, setLoggedIn] = useState(false);
   const history = useHistory();
@@ -189,7 +186,6 @@ export default function App() {
     setIsAddPlacePopupOpen(false);
     setIsDeleteCardPopupOpen(false);
     setIsImagePopupOpen(false);
-    setIsInfoTooltipOpen(false);
     setSelectedCard({});
   }
 
@@ -261,11 +257,6 @@ export default function App() {
             name="image"
             isOpen={isImagePopupOpen}
             card={selectedCard}
-            onClose={closeAllPopups}
-          />
-          <InfoTooltip
-            isOpen={isInfoTooltipOpen}
-            isSuccess={isInfoToolTipSucceed}
             onClose={closeAllPopups}
           />
         </div>

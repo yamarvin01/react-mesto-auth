@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import * as auth from "../../utils/auth";
 import { useHistory } from "react-router-dom";
+import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 export default function Register() {
   const [email, setEmail] = React.useState('');
@@ -73,6 +74,7 @@ export default function Register() {
       <div className="register__hint">
         <Link className="register__hint-title" to="/sign-in" >Уже зарегистрированы? Войти</Link>
       </div>
+      <InfoTooltip />
     </div>
   );
 }
