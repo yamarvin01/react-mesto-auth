@@ -38,6 +38,8 @@
 @import url("./styles/blocks/footer/footer.css");
 @import url("./styles/blocks/footer/__copyright/footer__copyright.css");
 
+@import url("./styles/blocks/icon/icon.css");
+
 @import url("./styles/blocks/button/button.css");
 @import url("./styles/blocks/button/_type/button_type_submit.css");
 @import url("./styles/blocks/button/_type/button_type_close.css");
