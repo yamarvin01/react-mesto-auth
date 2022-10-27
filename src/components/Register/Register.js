@@ -22,8 +22,8 @@ export default function Register() {
   function handleSubmit(evt) {
     evt.preventDefault();
     auth.register(email, password)
-      .then((registeredUserData) => {
-        if (registeredUserData) {
+      .then((userData) => {
+        if (userData) {
           setIsInfoTooltipOpened(true);
           setIsRegisterSuccess(true);
           console.log("Вы успешно зарегестрировались");
@@ -39,8 +39,11 @@ export default function Register() {
   }
 
   function handleInfoTooltipClose() {
-    setIsInfoTooltipOpened(false);
-    history.push("/sign-in");
+    if (isRegisterSuccess) {
+      history.push("/sign-in");
+    } else {
+      setIsInfoTooltipOpened(false);
+    }
   }
 
   return (
