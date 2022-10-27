@@ -20,7 +20,7 @@ export default function Header(props) {
       <a className="header__link" href="#" target="_blank" rel="noopener">
         <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
       </a>
-      <div className="header__content">
+      <div className="header__content header__content_hidden">
         <p className="header__text">{currentUserEmail}</p>
         {pathName === "/sign-up" && (
           <Link className="header__link" to="/sign-in">Войти</Link>
