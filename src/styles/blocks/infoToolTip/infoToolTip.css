@@ -1,9 +1,12 @@
 .infoToolTip {
-  width: 430px;
+  box-sizing: border-box;
+  border: none;
   border-radius: 10px;
+  width: 430px;
+  padding: 60px 36px;
+  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
 }
 
-
-/* .infoToolTip::backdrop {
-  border: 2px red solid;
-} */
+.infoToolTip::backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}

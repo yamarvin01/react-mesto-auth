@@ -3,8 +3,6 @@ import ButtonClose from "../ButtonClose/ButtonClose";
 import Icon from "../Icon/Icon";
 
 export default function InfoTooltip(props) {
-  const [isOpen, setIsOpen] = React.useState(false);
-
   const dialogRef = React.useRef();
 
   function showModal() {
@@ -21,9 +19,11 @@ export default function InfoTooltip(props) {
     // </div>
 
     <>
-      <dialog ref={dialogRef} open={isOpen} className="infoToolTip">
-        <Icon type={props.isSuccess ? "success" : "fail"} />
-        <p>Вы успешно зарагестрировались!</p>
+      <dialog ref={dialogRef} className="infoToolTip">
+        <div className="infoToolTip__container">
+          <Icon type={props.isSuccess ? "success" : "fail"} />
+          <p className="infoToolTip__text">Вы успешно зарагестрировались!</p>
+        </div>
       </dialog>
 
       <button onClick={showModal}>Click</button>
