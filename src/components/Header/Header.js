@@ -22,9 +22,14 @@ export default function Header(props) {
     setIsEmailVisible(!isEmailVisible);
   }
 
+  function handleSignOut() {
+    props.signOut();
+    setIsEmailVisible(false);
+  }
+
   return (
     <>
-    {width > 700 &&
+    {(width > 700 || (width < 700 && !props.loggedIn)) &&
       <header className="header">
         <a className="header__link" href="#" target="_blank" rel="noopener">
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
@@ -49,7 +54,7 @@ export default function Header(props) {
         <p className="header__mobile-text">{currentUserEmail}</p>
         <Link
           to="sign-in"
-          onClick={props.signOut}
+          onClick={handleSignOut}
           className="header__mobile-link"
         >
           Выйти
