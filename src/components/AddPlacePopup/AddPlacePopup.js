@@ -2,7 +2,7 @@ import React from "react";
 import PopupWithForm from "../PopupWithForm/PopupWithForm.js";
 
 export default function AddPlacePopup(props) {
-  const [nameValue, setNameValue] = React.useState("");
+  const [name, setNameValue] = React.useState("");
   const [linkValue, setLinkValue] = React.useState("");
 
   React.useEffect(() => {
@@ -21,7 +21,7 @@ export default function AddPlacePopup(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onAddCard({
-      name: nameValue,
+      name: name,
       link: linkValue,
     });
   }
@@ -37,7 +37,7 @@ export default function AddPlacePopup(props) {
     >
       <label className="popup__field" htmlFor="place">
         <input
-          value={nameValue || ""}
+          value={name || ""}
           onChange={handleNameChange}
           className="popup__input popup__input_type_place"
           name="place"
@@ -48,7 +48,7 @@ export default function AddPlacePopup(props) {
           maxLength="30"
           required
         />
-        <span className={`${props.name}-input-error popup__error`}></span>
+        <span className="place-input-error popup__error"></span>
       </label>
       <label className="popup__field" htmlFor="link">
         <input
@@ -61,7 +61,7 @@ export default function AddPlacePopup(props) {
           placeholder="Ссылка на картинку"
           required
         />
-        <span className={`${props.name}-input-error popup__error`}></span>
+        <span className="link-input-error popup__error"></span>
       </label>
     </PopupWithForm>
   );
