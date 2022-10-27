@@ -1,5 +1,7 @@
-export default function Icon() {
+// Типы иконок: success, fail
+
+export default function Icon(props) {
   return (
-    <img src={require("../../styles/images/icon-success.png")} />
+    <img src={require(`../../styles/images/icon-${props.type}.png`)} />
   );
 }

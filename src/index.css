@@ -59,10 +59,6 @@
 @import url("./styles/blocks/register/__hint/register__hint.css");
 @import url("./styles/blocks/register/__hint-title/register__hint-title.css");
 
-@import url("./styles/blocks/icon/icon.css");
-@import url("./styles/blocks/icon/_type/icon_type_success.css");
-@import url("./styles/blocks/icon/_type/icon_type_fail.css");
-
 @import url("./styles/blocks/popup/popup.css");
 @import url("./styles/blocks/popup/_opened/popup_opened.css");
 @import url("./styles/blocks/popup/_dark/popup_dark.css");
