@@ -1,12 +1,17 @@
-.infoToolTip {
+.infoTooltip {
+  border: 1px red solid;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 999;
   box-sizing: border-box;
-  border: none;
-  border-radius: 10px;
-  width: 430px;
-  padding: 60px 36px;
-  box-shadow: 0px 0px 25px 0px rgba(0, 0, 0, 0.15);
-}
-
-.infoToolTip::backdrop {
-  background: rgba(0, 0, 0, 0.5);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  visibility: hidden;
+  transition: visibility 0.5s linear, opacity 0.5s linear;
 }
