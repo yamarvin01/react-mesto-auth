@@ -200,6 +200,7 @@ export default function App() {
       <CurrentUserEmailContext.Provider value={currentUserEmail}>
         <div className="page">
           <Header
+            loggedIn={loggedIn}
             signOut={signOut}
           />
           <Switch>

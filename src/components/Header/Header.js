@@ -3,11 +3,13 @@ import { Link } from "react-router-dom";
 import logo from "../../styles/images/logo-mesto.svg";
 import { useHistory } from "react-router-dom";
 import { CurrentUserEmailContext } from "../../context/CurrentUserEmailContext";
+import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export default function Header(props) {
   const history = useHistory();
   const currentUserEmail = React.useContext(CurrentUserEmailContext);
   const [pathName, setPathName] = React.useState(history.location.pathname);
+  const { width } = useWindowDimensions();
 
   React.useEffect(() => {
     return history.listen((location) => {
@@ -16,6 +18,8 @@ export default function Header(props) {
   }, [history]);
 
   return (
+    <>
+    {width > 700 &&
     <header className="header">
       <a className="header__link" href="#" target="_blank" rel="noopener">
         <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
@@ -33,5 +37,16 @@ export default function Header(props) {
         )}
       </div>
     </header>
+    }
+
+    {width <= 700 &&
+    <header className="header">
+      <a className="header__link" href="#" target="_blank" rel="noopener">
+        <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
+      </a>
+      <img className="header__icon-group" src={require(`../../styles/images/icon-group.png`)} />
+    </header>
+    }
+    </>
   );
 }

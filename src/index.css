@@ -9,6 +9,7 @@
 @import url("./styles/blocks/header/__link/_dim/header__link_dim.css");
 @import url("./styles/blocks/header/__logo/header__logo.css");
 @import url("./styles/blocks/header/__text/header__text.css");
+@import url("./styles/blocks/header/__icon-group/header__icon-group.css");
 
 @import url("./styles/blocks/content/content.css");
 
