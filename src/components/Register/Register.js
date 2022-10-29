@@ -1,15 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import * as auth from "../../utils/auth";
-import { useHistory } from "react-router-dom";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
-export default function Register() {
+export default function Register(props) {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [isRegisterSuccess, setIsRegisterSuccess] = React.useState(false);
-  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(false);
-  const history = useHistory();
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
@@ -21,24 +15,7 @@ export default function Register() {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth.register(email, password)
-      .then((userData) => {
-        if (userData) {
-          setIsInfoTooltipOpened(true);
-          setIsRegisterSuccess(true);
-        } else {
-          setIsInfoTooltipOpened(true);
-          setIsRegisterSuccess(false);
-        }
-      });
-  }
-
-  function handleInfoTooltipClose() {
-    if (isRegisterSuccess) {
-      history.push("/sign-in");
-    } else {
-      setIsInfoTooltipOpened(false);
-    }
+    props.onRegister(email, password);
   }
 
   return (
@@ -82,11 +59,6 @@ export default function Register() {
       <div className="register__hint">
         <Link className="register__hint-title" to="/sign-in" >Уже зарегистрированы? Войти</Link>
       </div>
-      <InfoTooltip
-        isOpened={isInfoTooltipOpened}
-        isSuccess={isRegisterSuccess}
-        onClose={handleInfoTooltipClose}
-      />
     </div>
   );
 }

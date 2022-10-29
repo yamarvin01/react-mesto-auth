@@ -11,6 +11,7 @@ import EditProfilePopup from "./EditProfilePopup/EditProfilePopup";
 import Footer from "./Footer/Footer";
 import Header from "./Header/Header";
 import ImagePopup from "./ImagePopup/ImagePopup";
+import InfoTooltip from "./InfoTooltip/InfoTooltip";
 import Main from "./Main/Main";
 import Login from "./Login/Login";
 import ProtectedRoute from "./ProtectedRoute/ProtectedRoute";
@@ -27,6 +28,8 @@ export default function App() {
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = React.useState(false);
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
+  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(false);
+  const [isInfoTooltipSuccess, setIsInfoTooltipSuccess] = React.useState(false);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
   const [loggedIn, setLoggedIn] = React.useState(false);
   const history = useHistory();
@@ -189,7 +192,21 @@ export default function App() {
     setIsAddPlacePopupOpen(false);
     setIsDeleteCardPopupOpen(false);
     setIsImagePopupOpen(false);
+    setIsInfoTooltipOpened(false);
     setSelectedCard({});
+  }
+
+  function handleRegister(email, password) {
+    auth.register(email, password)
+      .then((userData) => {
+        if (userData) {
+          setIsInfoTooltipOpened(true);
+          setIsInfoTooltipSuccess(true);
+        } else {
+          setIsInfoTooltipOpened(true);
+          setIsInfoTooltipSuccess(false);
+        }
+      });
   }
 
   function signOut() {
@@ -224,11 +241,15 @@ export default function App() {
                 <Login handleLogin={handleLogin}/>
               </div>
             </Route>
+
             <Route path="/sign-up">
               <div className="registerContainer">
-                <Register />
+                <Register
+                  onRegister={handleRegister}
+                />
               </div>
             </Route>
+
           </Switch>
           <Footer />
           <EditAvatarPopup
@@ -261,6 +282,11 @@ export default function App() {
             name="image"
             isOpen={isImagePopupOpen}
             card={selectedCard}
+            onClose={closeAllPopups}
+          />
+          <InfoTooltip
+            isOpened={isInfoTooltipOpened}
+            isSuccess={isInfoTooltipSuccess}
             onClose={closeAllPopups}
           />
         </div>
