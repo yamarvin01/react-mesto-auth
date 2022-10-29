@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Route, Switch, useHistory } from "react-router-dom";
 import { api } from "../utils/api";
 import * as auth from '../utils/auth';
@@ -28,11 +28,10 @@ export default function App() {
   const [isDeleteCardPopupOpen, setIsDeleteCardPopupOpen] = React.useState(false);
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const history = useHistory();
 
   React.useEffect(() => {
-    tokenCheck();
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userData, cardList]) => {
         setCurrentUser(userData);
@@ -42,6 +41,10 @@ export default function App() {
         console.log(err);
       });
   }, []);
+
+  React.useEffect(() => {
+    tokenCheck();
+  });
 
   React.useEffect(() => {
     function closeByEscape(evt) {
