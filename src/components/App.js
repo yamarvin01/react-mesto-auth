@@ -220,7 +220,7 @@ export default function App() {
         setIsInfoTooltipOpened(true);
         setIsInfoTooltipSuccess(false);
         setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
-        console.log(err);
+        console.log(err.message);
       });
   }
 
