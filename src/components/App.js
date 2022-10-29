@@ -63,10 +63,9 @@ export default function App() {
     if(isOpen) {
       document.addEventListener('keyup', closeByEscape);
       document.addEventListener('mouseup', closeByClick);
-      return () => {
-        document.removeEventListener('keyup', closeByEscape);
-        document.removeEventListener('mouseup', closeByClick);
-      }
+    } else {
+      document.removeEventListener('keyup', closeByEscape);
+      document.removeEventListener('mouseup', closeByClick);
     }
   }, [isOpen]);
 
