@@ -30,6 +30,7 @@ export default function App() {
   const [isImagePopupOpen, setIsImagePopupOpen] = React.useState(false);
   const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(false);
   const [isInfoTooltipSuccess, setIsInfoTooltipSuccess] = React.useState(false);
+  const [infoTooltipText, setInfoTooltipText] = React.useState('');
   const isOpen = isEditAvatarPopupOpen || isEditProfilePopupOpen || isAddPlacePopupOpen || isImagePopupOpen || isDeleteCardPopupOpen;
   const [loggedIn, setLoggedIn] = React.useState(false);
   const history = useHistory();
@@ -77,15 +78,12 @@ export default function App() {
   function tokenCheck() {
     const token = localStorage.getItem('token');
     if (token) {
-      auth.getContent(token).then((userData) => {
-        if (userData) {
+      auth.getContent(token)
+        .then((userData) => {
           setLoggedIn(true);
           setCurrentUserEmail(userData.data.email);
           history.push("/");
-        } else {
-          return;
-        }
-      });
+        });
     }
   }
 
@@ -186,9 +184,11 @@ export default function App() {
         if (userData) {
           setIsInfoTooltipOpened(true);
           setIsInfoTooltipSuccess(true);
+          setInfoTooltipText("Вы успешно зарегистировались!");
         } else {
           setIsInfoTooltipOpened(true);
           setIsInfoTooltipSuccess(false);
+          setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
         }
       });
   }
@@ -202,6 +202,7 @@ export default function App() {
         } else {
           setIsInfoTooltipOpened(true);
           setIsInfoTooltipSuccess(false);
+          setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
         }
       });
   }
@@ -282,6 +283,7 @@ export default function App() {
           <InfoTooltip
             isOpened={isInfoTooltipOpened}
             isSuccess={isInfoTooltipSuccess}
+            text={infoTooltipText}
             onClose={closeAllPopups}
           />
         </div>
