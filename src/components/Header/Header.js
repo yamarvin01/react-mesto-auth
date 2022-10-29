@@ -45,13 +45,7 @@ export default function Header(props) {
     {width <= 700 && props.loggedIn && isEmailVisible &&
       <div className="header__mobile">
         <p className="header__mobile-text">{currentUserEmail}</p>
-        <Link
-          to="sign-in"
-          onClick={handleSignOut}
-          className="header__mobile-link"
-        >
-          Выйти
-        </Link>
+        <Link className="header__mobile-link" to="sign-in" onClick={handleSignOut}>Выйти</Link>
       </div>
     }
 
@@ -61,8 +55,12 @@ export default function Header(props) {
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
         </Link>
         <img
-          className={isEmailVisible ? "header__icon-close" : "header__icon-group"}
-          src={isEmailVisible ? require(`../../styles/images/btn-close.png`) : require(`../../styles/images/icon-group.png`)}
+          className={isEmailVisible
+            ? "header__icon-close"
+            : "header__icon-group"}
+          src={isEmailVisible
+            ? require(`../../styles/images/btn-close.png`)
+            : require(`../../styles/images/icon-group.png`)}
           onClick={handleClick}
           alt="Кнопка показа/скрытия части контента" />
       </header>
