@@ -33,9 +33,6 @@ export default function Login(props) {
         } else {
           console.log("Что-то пошло не так!");
         }
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 
