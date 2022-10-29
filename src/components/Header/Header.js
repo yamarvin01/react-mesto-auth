@@ -1,22 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, Route, Switch } from "react-router-dom";
 import logo from "../../styles/images/logo-mesto.svg";
 import { useHistory } from "react-router-dom";
 import { CurrentUserEmailContext } from "../../context/CurrentUserEmailContext";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
 export default function Header(props) {
-  const history = useHistory();
   const currentUserEmail = React.useContext(CurrentUserEmailContext);
-  const [pathName, setPathName] = React.useState(history.location.pathname);
   const [isEmailVisible, setIsEmailVisible] = React.useState(false);
   const { width } = useWindowDimensions();
-
-  React.useEffect(() => {
-    return history.listen((location) => {
-      setPathName(location.pathname);
-    });
-  }, [history]);
+  const history = useHistory();
 
   function handleClick() {
     setIsEmailVisible(!isEmailVisible);
@@ -36,15 +29,17 @@ export default function Header(props) {
         </Link>
         <div className="header__content">
           <p className="header__text">{currentUserEmail}</p>
-          {pathName === "/sign-up" && (
-            <Link className="header__link" to="/sign-in">Войти</Link>
-          )}
-          {pathName === "/sign-in" && (
-            <Link className="header__link" to="/sign-up">Регистрация</Link>
-          )}
-          {pathName === "/" && (
-            <Link className="header__link header__link_dim" to="sign-in" onClick={props.signOut}>Выйти</Link>
-          )}
+          <Switch>
+            <Route path="/sign-up">
+              <Link className="header__link" to="/sign-in">Войти</Link>
+            </Route>
+            <Route path="/sign-in">
+              <Link className="header__link" to="/sign-up">Регистрация</Link>
+            </Route>
+            <Route exact to="/">
+              <Link className="header__link header__link_dim" to="sign-in" onClick={props.signOut}>Выйти</Link>
+            </Route>
+          </Switch>
         </div>
       </header>
     }

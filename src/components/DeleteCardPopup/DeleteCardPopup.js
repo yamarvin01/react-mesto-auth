@@ -9,6 +9,6 @@ export default function DeleteCardPopup(props) {
       onSubmit={props.onDeleteCard}
       isOpen={props.isOpen}
       onClose={props.onClose}
-    ></PopupWithForm>
+    />
   );
 }
