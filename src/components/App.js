@@ -35,15 +35,17 @@ export default function App() {
   const history = useHistory();
 
   React.useEffect(() => {
-    Promise.all([api.getUserInfo(), api.getInitialCards()])
-      .then(([userData, cardList]) => {
-        setCurrentUser(userData);
-        setCards(cardList);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
+    if (loggedIn) {
+      Promise.all([api.getUserInfo(), api.getInitialCards()])
+        .then(([userData, cardList]) => {
+          setCurrentUser(userData);
+          setCards(cardList);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      }
+  }, [loggedIn]);
 
   React.useEffect(() => {
     tokenCheck();
