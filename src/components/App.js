@@ -195,18 +195,15 @@ export default function App() {
 
   function handleRegister(email, password) {
     auth.register(email, password)
-      .then((userData) => {
-        if (userData) {
-          setIsInfoTooltipOpened(true);
-          setIsInfoTooltipSuccess(true);
-          setInfoTooltipText("Вы успешно зарегистировались!");
-        } else {
-          setIsInfoTooltipOpened(true);
-          setIsInfoTooltipSuccess(false);
-          setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
-        }
+      .then(() => {
+        setIsInfoTooltipOpened(true);
+        setIsInfoTooltipSuccess(true);
+        setInfoTooltipText("Вы успешно зарегистировались!");
       })
       .catch((err) => {
+        setIsInfoTooltipOpened(true);
+        setIsInfoTooltipSuccess(false);
+        setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
         console.log(err);
       });
   }
