@@ -1,11 +1,6 @@
 export default function ImagePopup(props) {
   return (
-    <div
-      className={
-        props.isOpen
-          ? `popup popup_dark popup_type_${props.name} popup_opened`
-          : `popup popup_dark popup_type_${props.name}`
-      }
+    <div className={`popup popup_type_${props.name} popup_dark ${props.isOpen && "popup_opened"}`}
     >
       <div className="popup__container popup__container_type_image">
         <button

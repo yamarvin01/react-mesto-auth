@@ -8,13 +8,7 @@ export default function PopupWithForm({
   onSubmit,
 }) {
   return (
-    <div
-      className={
-        isOpen
-          ? `popup popup_type_${name} popup_opened`
-          : `popup popup_type_${name}`
-      }
-    >
+    <div className={`popup popup_type_${name} ${isOpen && 'popup_opened'}`}>
       <div className={`popup__container popup__container_type_${name}`}>
         <h2 className="popup__title">{title}</h2>
         <button
