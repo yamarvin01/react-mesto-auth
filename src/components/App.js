@@ -41,6 +41,9 @@ export default function App() {
         .then(([userData, cardList]) => {
           setCurrentUser(userData);
           setCards(cardList);
+        })
+        .catch((err) => {
+          console.log(err);
         });
       }
   }, [loggedIn]);
@@ -77,6 +80,9 @@ export default function App() {
           setLoggedIn(true);
           setCurrentUserEmail(userData.data.email);
           history.push("/");
+        })
+        .catch((err) => {
+          console.log(err);
         });
     }
   }
@@ -87,6 +93,9 @@ export default function App() {
       .then((userData) => {
         setCurrentUser(userData);
         closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -100,6 +109,9 @@ export default function App() {
         setCurrentUser(userData);
         closeAllPopups();
       })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -112,6 +124,9 @@ export default function App() {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
         );
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
@@ -128,6 +143,9 @@ export default function App() {
         setCards(state => state.filter(card => card._id !== selectedCard._id));
         closeAllPopups();
       })
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -139,6 +157,9 @@ export default function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
+      })
+      .catch((err) => {
+        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -184,12 +205,16 @@ export default function App() {
           setIsInfoTooltipSuccess(false);
           setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 
   function handleLogin(email, password) {
     auth.authorize(email, password)
       .then((data) => {
+        localStorage.setItem("token", data.token);
         if (data) {
           setLoggedIn(true);
           setCurrentUserEmail(email);
@@ -199,6 +224,9 @@ export default function App() {
           setIsInfoTooltipSuccess(false);
           setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
         }
+      })
+      .catch((err) => {
+        console.log(err);
       });
   }
 

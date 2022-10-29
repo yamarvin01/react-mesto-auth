@@ -15,11 +15,7 @@ export const register = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then(response => checkResponse(response))
-    .then(res => res)
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(response => checkResponse(response));
 };
 
 export const authorize = (email, password) => {
@@ -30,14 +26,7 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then(response => checkResponse(response))
-    .then((data) => {
-      localStorage.setItem("token", data.token);
-      return data;
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(response => checkResponse(response));
 };
 
 export const getContent = (token) => {
@@ -48,9 +37,5 @@ export const getContent = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then(response => checkResponse(response))
-    .then(res => res)
-    .catch((err) => {
-      console.log(err);
-    });
+    .then(response => checkResponse(response));
 };
