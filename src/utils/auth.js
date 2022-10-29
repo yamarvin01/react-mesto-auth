@@ -9,13 +9,14 @@ export const register = (email, password) => {
     body: JSON.stringify({ email, password }),
   })
     .then((response) => {
-      if(response.ok) {
+      if (response.ok) {
         return response.json();
       }
-      return Promise.reject(`Ошибка: ${response.status} ${response.statusText}`);
+      return Promise.reject(
+        `Ошибка: ${response.status} ${response.statusText}`
+      );
     })
     .then((res) => {
-      console.log(res);
       return res;
     })
     .catch((err) => {
@@ -27,37 +28,35 @@ export const authorize = (email, password) => {
   return fetch(`${BASE_URL}/signin`, {
     method: "POST",
     headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
     },
-    body: JSON.stringify({email, password})
+    body: JSON.stringify({ email, password }),
   })
     .then((response) => {
       if (response.ok) {
         return response.json();
       }
-      return Promise.reject(`Ошибка: ${response.status} ${response.statusText}`);
+      return Promise.reject(
+        `Ошибка: ${response.status} ${response.statusText}`
+      );
     })
     .then((data) => {
-      if (data.token) {
-        localStorage.setItem('token', data.token);
-        return data;
-      } else {
-        return;
-      }
+      localStorage.setItem("token", data.token);
+      return data;
     })
     .catch((err) => {
       console.log(err);
     });
-}
+};
 
 export const getContent = (token) => {
   return fetch(`${BASE_URL}/users/me`, {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization" : `Bearer ${token}`
-    }
+      Authorization: `Bearer ${token}`,
+    },
   })
-  .then(res => res.json())
-  .then(data => data);
-}
+    .then((res) => res.json())
+    .then((data) => data);
+};
