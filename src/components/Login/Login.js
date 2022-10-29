@@ -20,20 +20,7 @@ export default function Login(props) {
 
   function handleSubmit(evt) {
     evt.preventDefault();
-    auth.authorize(email, password)
-      .then((data) => {
-        if (data === undefined) {
-          setIsLoginSuccess(false);
-          setIsInfoTooltipOpened(true);
-        } else if (data.token) {
-          props.handleLogin({loggedIn: true, email: email});
-          setEmail('');
-          setPassword('');
-          history.push('/');
-        } else {
-          console.log("Что-то пошло не так!");
-        }
-      });
+    props.onLogin(email, password);
   }
 
   function handleInfoTooltipClose() {

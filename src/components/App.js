@@ -209,6 +209,21 @@ export default function App() {
       });
   }
 
+  function handleLogin(email, password) {
+    auth.authorize(email, password)
+      .then((data) => {
+        if (data === undefined) {
+          setIsInfoTooltipOpened(true);
+          setIsInfoTooltipSuccess(true);
+        } else if (data.token) {
+          setLoggedIn(true);
+          history.push('/');
+        } else {
+          console.log("Что-то пошло не так!");
+        }
+      });
+  }
+
   function signOut() {
     setLoggedIn(false);
     setCurrentUserEmail('');
@@ -238,10 +253,9 @@ export default function App() {
             />
             <Route path="/sign-in">
               <div className="loginContainer">
-                <Login handleLogin={handleLogin}/>
+                <Login onLogin={handleLogin}/>
               </div>
             </Route>
-
             <Route path="/sign-up">
               <div className="registerContainer">
                 <Register
@@ -249,7 +263,6 @@ export default function App() {
                 />
               </div>
             </Route>
-
           </Switch>
           <Footer />
           <EditAvatarPopup
