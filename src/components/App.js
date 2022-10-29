@@ -40,9 +40,6 @@ export default function App() {
         .then(([userData, cardList]) => {
           setCurrentUser(userData);
           setCards(cardList);
-        })
-        .catch((err) => {
-          console.log(err);
         });
       }
   }, [loggedIn]);
@@ -99,9 +96,6 @@ export default function App() {
         setCurrentUser(userData);
         closeAllPopups();
       })
-      .catch((err) => {
-        console.log(err);
-      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -113,9 +107,6 @@ export default function App() {
       .then((userData) => {
         setCurrentUser(userData);
         closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);
@@ -129,9 +120,6 @@ export default function App() {
         setCards((state) =>
           state.map((c) => (c._id === card._id ? newCard : c))
         );
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 
@@ -148,9 +136,6 @@ export default function App() {
         setCards(state => state.filter(card => card._id !== selectedCard._id));
         closeAllPopups();
       })
-      .catch((err) => {
-        console.log(err);
-      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -162,9 +147,6 @@ export default function App() {
       .then((newCard) => {
         setCards([newCard, ...cards]);
         closeAllPopups();
-      })
-      .catch((err) => {
-        console.log(err);
       })
       .finally(() => {
         setIsLoading(false);

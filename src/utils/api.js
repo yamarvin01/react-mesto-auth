@@ -13,7 +13,11 @@ class Api {
   }
 
   _request(url, options) {
-    return fetch(url, options).then(this._checkResponse);
+    return fetch(url, options)
+      .then(this._checkResponse)
+      .catch((err) => {
+        console.log(err)}
+      );
   }
 
   getUserInfo() {
