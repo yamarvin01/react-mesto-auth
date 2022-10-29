@@ -31,9 +31,9 @@ export default function Header(props) {
     <>
     {(width > 700 || (width < 700 && !props.loggedIn)) &&
       <header className="header">
-        <a className="header__link" href="#" target="_blank" rel="noopener">
+        <Link className="header__link" to="/">
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
-        </a>
+        </Link>
         <div className="header__content">
           <p className="header__text">{currentUserEmail}</p>
           {pathName === "/sign-up" && (
