@@ -212,14 +212,12 @@ export default function App() {
   function handleLogin(email, password) {
     auth.authorize(email, password)
       .then((data) => {
-        if (data === undefined) {
-          setIsInfoTooltipOpened(true);
-          setIsInfoTooltipSuccess(true);
-        } else if (data.token) {
+        if (data) {
           setLoggedIn(true);
           history.push('/');
         } else {
-          console.log("Что-то пошло не так!");
+          setIsInfoTooltipOpened(true);
+          setIsInfoTooltipSuccess(false);
         }
       });
   }

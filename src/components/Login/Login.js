@@ -1,14 +1,8 @@
 import React from "react";
-import * as auth from "../../utils/auth";
-import { useHistory } from "react-router-dom";
-import InfoTooltip from "../InfoTooltip/InfoTooltip";
 
 export default function Login(props) {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
-  const [isLoginSuccess, setIsLoginSuccess] = React.useState(false);
-  const [isInfoTooltipOpened, setIsInfoTooltipOpened] = React.useState(false);
-  const history = useHistory();
 
   function handleEmailChange(evt) {
     setEmail(evt.target.value);
@@ -21,10 +15,6 @@ export default function Login(props) {
   function handleSubmit(evt) {
     evt.preventDefault();
     props.onLogin(email, password);
-  }
-
-  function handleInfoTooltipClose() {
-    setIsInfoTooltipOpened(false);
   }
 
   return (
@@ -65,11 +55,6 @@ export default function Login(props) {
           Войти
         </button>
       </form>
-      <InfoTooltip
-        isOpened={isInfoTooltipOpened}
-        isSuccess={isLoginSuccess}
-        onClose={handleInfoTooltipClose}
-      />
     </div>
   );
 }
