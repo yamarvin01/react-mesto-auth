@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, Route, Switch } from "react-router-dom";
 import logo from "../../styles/images/logo-mesto.svg";
-import { useHistory } from "react-router-dom";
 import { CurrentUserEmailContext } from "../../context/CurrentUserEmailContext";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
@@ -9,7 +8,6 @@ export default function Header(props) {
   const currentUserEmail = React.useContext(CurrentUserEmailContext);
   const [isEmailVisible, setIsEmailVisible] = React.useState(false);
   const { width } = useWindowDimensions();
-  const history = useHistory();
 
   function handleClick() {
     setIsEmailVisible(!isEmailVisible);

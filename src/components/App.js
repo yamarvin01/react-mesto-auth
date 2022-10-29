@@ -69,11 +69,6 @@ export default function App() {
     }
   }, [isOpen]);
 
-  function handleLogin({loggedIn, email}) {
-    setLoggedIn(loggedIn);
-    setCurrentUserEmail(email);
-  }
-
   function tokenCheck() {
     const token = localStorage.getItem('token');
     if (token) {
@@ -197,6 +192,7 @@ export default function App() {
       .then((data) => {
         if (data) {
           setLoggedIn(true);
+          setCurrentUserEmail(email);
           history.push('/');
         } else {
           setIsInfoTooltipOpened(true);
