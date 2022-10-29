@@ -57,6 +57,18 @@ export const getContent = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((res) => res.json())
-    .then((data) => data);
+    .then((response) => {
+      if (response.ok) {
+        return response.json();
+      }
+      return Promise.reject(
+        `Ошибка: ${response.status} ${response.statusText}`
+      );
+    })
+    .then((data) => {
+      return data;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };
