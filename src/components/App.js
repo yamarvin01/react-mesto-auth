@@ -60,7 +60,7 @@ export default function App() {
         closeAllPopups();
       }
     }
-    if(isOpen) {
+    if (isOpen) {
       document.addEventListener('keyup', closeByEscape);
       document.addEventListener('mouseup', closeByClick);
     } else {
