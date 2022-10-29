@@ -1,5 +1,3 @@
-import ButtonClose from "../ButtonClose/ButtonClose";
-
 export default function ImagePopup(props) {
   return (
     <div
@@ -10,7 +8,12 @@ export default function ImagePopup(props) {
       }
     >
       <div className="popup__container popup__container_type_image">
-        <ButtonClose onClose={props.onClose} />
+        <button
+          onClick={props.onClose}
+          className="button button_type_close"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
         <img
           className="popup__image"
           alt={`Изображение ${props.card.name}`}

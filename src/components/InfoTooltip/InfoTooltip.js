@@ -1,5 +1,4 @@
 import React from "react";
-import ButtonClose from "../ButtonClose/ButtonClose";
 import Icon from "../Icon/Icon";
 
 export default function InfoTooltip(props) {
@@ -16,7 +15,12 @@ export default function InfoTooltip(props) {
             : "Что-то пошло не так! Попробуйте ещё раз."
           }
         </h2>
-        <ButtonClose onClose={props.onClose} />
+        <button
+          onClick={props.onClose}
+          className="button button_type_close"
+          type="button"
+          aria-label="Закрыть"
+        ></button>
       </div>
     </div>
   );
