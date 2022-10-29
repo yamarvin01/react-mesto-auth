@@ -64,13 +64,14 @@ export default function Header(props) {
 
     {width <= 700 && props.loggedIn &&
       <header className="header">
-        <a className="header__link" href="#" target="_blank" rel="noopener">
+        <Link className="header__link" to="/">
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
-        </a>
+        </Link>
         <img
           className={isEmailVisible ? "header__icon-close" : "header__icon-group"}
           src={isEmailVisible ? require(`../../styles/images/btn-close.png`) : require(`../../styles/images/icon-group.png`)}
-          onClick={handleClick} />
+          onClick={handleClick}
+          alt="Кнопка показа/скрытия части контента" />
       </header>
     }
     </>
