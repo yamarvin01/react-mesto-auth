@@ -15,12 +15,8 @@ export const register = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => {
-      return checkResponse(response);
-    })
-    .then((res) => {
-      return res;
-    })
+    .then(response => checkResponse(response))
+    .then(res => res)
     .catch((err) => {
       console.log(err);
     });
@@ -34,9 +30,7 @@ export const authorize = (email, password) => {
     },
     body: JSON.stringify({ email, password }),
   })
-    .then((response) => {
-      return checkResponse(response);
-    })
+    .then(response => checkResponse(response))
     .then((data) => {
       localStorage.setItem("token", data.token);
       return data;
@@ -54,12 +48,8 @@ export const getContent = (token) => {
       Authorization: `Bearer ${token}`,
     },
   })
-    .then((response) => {
-      return checkResponse(response);
-    })
-    .then((data) => {
-      return data;
-    })
+    .then(response => checkResponse(response))
+    .then(res => res)
     .catch((err) => {
       console.log(err);
     });
