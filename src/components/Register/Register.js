@@ -30,9 +30,6 @@ export default function Register() {
           setIsInfoTooltipOpened(true);
           setIsRegisterSuccess(false);
         }
-      })
-      .catch((err) => {
-        console.log(err);
       });
   }
 
