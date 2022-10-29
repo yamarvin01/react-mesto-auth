@@ -215,17 +215,14 @@ export default function App() {
     auth.authorize(email, password)
       .then((data) => {
         localStorage.setItem("token", data.token);
-        if (data) {
-          setLoggedIn(true);
-          setCurrentUserEmail(email);
-          history.push('/');
-        } else {
-          setIsInfoTooltipOpened(true);
-          setIsInfoTooltipSuccess(false);
-          setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
-        }
+        setLoggedIn(true);
+        setCurrentUserEmail(email);
+        history.push('/');
       })
       .catch((err) => {
+        setIsInfoTooltipOpened(true);
+        setIsInfoTooltipSuccess(false);
+        setInfoTooltipText("Что-то пошло не так! Попробуйте ещё раз.");
         console.log(err);
       });
   }
