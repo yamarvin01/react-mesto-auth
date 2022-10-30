@@ -198,6 +198,7 @@ export default function App() {
       .then(() => {
         setIsInfoTooltipOpened(true);
         setIsInfoTooltipSuccess(true);
+        history.push('/sign-in');
         setInfoTooltipText("Вы успешно зарегистировались!");
       })
       .catch((err) => {
