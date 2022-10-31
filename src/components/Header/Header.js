@@ -25,7 +25,6 @@ const Header = React.memo((props) => {
         <Link className="header__link" to="/">
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
         </Link>
-        <h2>{Math.random()}</h2>
         <div className="header__content">
           <p className="header__text">{currentUserEmail}</p>
           <Switch>

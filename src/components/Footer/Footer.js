@@ -6,7 +6,6 @@ const Footer = React.memo(() => {
       <p className="footer__copyright">
         &copy; {new Date().getFullYear()} Mesto Russia
       </p>
-      <h2>{Math.random()}</h2>
     </footer>
   );
 });

@@ -44,7 +44,6 @@ const Card = React.memo((props) => {
           <p className="card__like-text">{props.card.likes.length}</p>
         </div>
       </div>
-        <h2>{Math.random()}</h2>
       <button
         onClick={handleDeleteClick}
         className={cardDeleteButtonClassName}
