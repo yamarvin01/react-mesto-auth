@@ -81,7 +81,9 @@ export default function App() {
         .then((userData) => {
           setLoggedIn(true);
           setCurrentUserEmail(userData.data.email);
-          history.push("/");
+          if (history.location.pathname !== "/") {
+            history.push("/");
+          }
         })
         .catch((err) => {
           console.log(err);
