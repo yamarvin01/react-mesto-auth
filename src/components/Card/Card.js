@@ -1,16 +1,16 @@
 import React from "react";
 import { CurrentUserContext } from "../../context/CurrentUserContext.js";
 
-export default function Card(props) {
+const Card = React.memo((props) => {
   const currentUser = React.useContext(CurrentUserContext);
   const isOwn = props.card.owner._id === currentUser._id;
   const isLiked = props.card.likes.some((i) => i._id === currentUser._id);
   const cardDeleteButtonClassName = `
     card__button card__button_type_delete
-    ${isOwn ? "card__button_visible" : ""}`;
+    ${isOwn && "card__button_visible"}`;
   const cardLikeButtonClassName = `
     card__button card__button_type_like
-    ${isLiked ? "card__button_status_active" : ""}`;
+    ${isLiked && "card__button_status_active"}`;
 
   function handleClick() {
     props.onCardClick(props.card);
@@ -44,6 +44,7 @@ export default function Card(props) {
           <p className="card__like-text">{props.card.likes.length}</p>
         </div>
       </div>
+        <h2>{Math.random()}</h2>
       <button
         onClick={handleDeleteClick}
         className={cardDeleteButtonClassName}
@@ -52,4 +53,6 @@ export default function Card(props) {
       ></button>
     </article>
   );
-}
+});
+
+export default Card;
