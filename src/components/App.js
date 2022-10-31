@@ -49,8 +49,10 @@ export default function App() {
   }, [loggedIn]);
 
   React.useEffect(() => {
-    tokenCheck();
-  });
+    if (!loggedIn) {
+      tokenCheck();
+    }
+  }, [loggedIn]);
 
   React.useEffect(() => {
     function closeByEscape(evt) {

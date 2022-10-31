@@ -1,9 +1,14 @@
-export default function Footer() {
+import React from "react";
+
+const Footer = React.memo(() => {
   return (
     <footer className="footer">
       <p className="footer__copyright">
         &copy; {new Date().getFullYear()} Mesto Russia
       </p>
+      <h2>{Math.random()}</h2>
     </footer>
   );
-}
+});
+
+export default Footer;

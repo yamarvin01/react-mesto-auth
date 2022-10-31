@@ -4,7 +4,7 @@ import logo from "../../styles/images/logo-mesto.svg";
 import { CurrentUserEmailContext } from "../../context/CurrentUserEmailContext";
 import useWindowDimensions from "../../hooks/useWindowDimensions";
 
-export default function Header(props) {
+const Header = React.memo((props) => {
   const currentUserEmail = React.useContext(CurrentUserEmailContext);
   const [isEmailVisible, setIsEmailVisible] = React.useState(false);
   const { width } = useWindowDimensions();
@@ -25,6 +25,7 @@ export default function Header(props) {
         <Link className="header__link" to="/">
           <img className="header__logo" src={logo} alt="Логотип Mesto Russia" />
         </Link>
+        <h2>{Math.random()}</h2>
         <div className="header__content">
           <p className="header__text">{currentUserEmail}</p>
           <Switch>
@@ -67,4 +68,6 @@ export default function Header(props) {
     }
     </>
   );
-}
+});
+
+export default Header;
