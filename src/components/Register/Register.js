@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export default function Register(props) {
+const Register = React.memo((props) => {
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
 
@@ -61,4 +61,6 @@ export default function Register(props) {
       </div>
     </div>
   );
-}
+});
+
+export default Register;

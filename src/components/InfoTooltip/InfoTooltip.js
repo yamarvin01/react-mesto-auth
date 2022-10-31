@@ -1,6 +1,7 @@
+import React from "react";
 import Icon from "../Icon/Icon";
 
-export default function InfoTooltip(props) {
+const InfoTooltip = React.memo((props) => {
   return (
     <div className={`infoTooltip ${props.isOpened && "infoTooltip_opened"}`}>
       <div className="infoTooltip__container">
@@ -15,4 +16,6 @@ export default function InfoTooltip(props) {
       </div>
     </div>
   );
-}
+});
+
+export default InfoTooltip;

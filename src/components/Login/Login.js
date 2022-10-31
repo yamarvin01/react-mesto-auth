@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function Login(props) {
+const Login = React.memo((props) => {
   const [email, setEmail] = React.useState("");
   const [password, setPassword] = React.useState("");
 
@@ -57,4 +57,6 @@ export default function Login(props) {
       </form>
     </div>
   );
-}
+});
+
+export default Login;

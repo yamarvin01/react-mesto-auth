@@ -1,6 +1,7 @@
 // Типы иконок: success, fail
+import React from "react";
 
-export default function Icon(props) {
+const Icon = React.memo((props) => {
   return (
     <img
       className="icon"
@@ -8,4 +9,6 @@ export default function Icon(props) {
       alt="Иконка"
     />
   );
-}
+});
+
+export default Icon;
