@@ -235,6 +235,8 @@ export default function App() {
     localStorage.removeItem('token');
   }
 
+  console.log(navigator.userAgent);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <CurrentUserEmailContext.Provider value={currentUserEmail}>
